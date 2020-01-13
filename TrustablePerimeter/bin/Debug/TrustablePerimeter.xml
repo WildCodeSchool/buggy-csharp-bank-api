@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TrustablePerimeter</name>
+    </assembly>
+    <members>
+        <member name="T:TrustablePerimeter.WithdrawMoneyAction">
+            <summary>
+            An action to withdraw money from an account
+            Uniform Resource Locator: /account/withdraw
+            Method: POST
+            Parameters:
+                id - id of an account
+                amount - amount of money to withdraw
+            Unless you specify all the arguments, calling this action will throw an exception
+            </summary>
+        </member>
+        <member name="T:TrustablePerimeter.ShowCustomerAction">
+            <summary>
+            This action shows customer(s) data.
+            Uniform Resource Locator: /customers
+            Method: POST
+            Parameters:
+                id - id of a customer
+            If you don't specify the id parameter, this action will return every customer in the database
+            </summary>
+        </member>
+        <member name="T:TrustablePerimeter.ShowAccountAction">
+            <summary>
+            This action shows account(s) data.
+            Uniform Resource Locator: /accounts
+            Method: POST
+            Parameters:
+                id - id of an account
+            If you don't specify the id parameter, this action will return every account in the database
+            </summary>
+        </member>
+        <member name="T:TrustablePerimeter.CreateCustomerAction">
+            <summary>
+            This action creates or updates a customer.
+            Uniform Resource Locator: /customer/create
+            Method: POST
+            Parameters:
+                id - id of a customer
+                name - name of the customer
+                account - account id that belong to the customer
+            If a customer in the database already has the same id, data from the request will replace data in the database
+            </summary>
+        </member>
+        <member name="T:TrustablePerimeter.CreateAccountAction">
+            <summary>
+            This action creates or updates an account.
+            Uniform Resource Locator: /account/create
+            Method: POST
+            Parameters:
+                id - id of a customer
+                name - name of the customer
+            If an account in the database already has the same id, data from the request will replace data in the database
+            </summary>
+        </member>
+    </members>
+</doc>

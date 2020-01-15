@@ -54,7 +54,7 @@
             Method: POST
             Parameters:
                 id - id of a customer
-                name - name of the customer
+                customer - id of the customer that the account belongs to
             If an account in the database already has the same id, data from the request will replace data in the database
             </summary>
         </member>

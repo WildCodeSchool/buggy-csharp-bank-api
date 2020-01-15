@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace TrustablePerimeter.Entities
 {
-    public class Customer
+    public class Customer : AbstractEntity
     {
-        public Account[] Accounts { get; private set; }
-        public string Name { get; private set; }
-        public int Id { get; private set; }
-
-        public Customer(IReadOnlyDictionary<string, object> data)
-        {
-
-        }
+        public Account Account { get; set; }
+        public string Name { get; set; }
+        public int Id { get; set; }
     }
 }

@@ -1,10 +1,11 @@
 ﻿using System;
 namespace TrustablePerimeter.Entities
 {
-    public class Account
+    public class Account : AbstractEntity
     {
-        public float Money { get; private set; }
-        public Customer Customer { get; private set; }
+        public float Money { get; set; }
+        public Customer Customer { get; set; }
+        public int Id { get; set; }
 
         public float Withdraw(float moneyAmount)
         {
@@ -26,6 +27,11 @@ namespace TrustablePerimeter.Entities
                 throw new ArgumentException("Can not credit a negative amount of money");
             }
             Money += moneyAmount;
+        }
+
+        public override string ToString()
+        {
+            return "Account n°" + Id;
         }
 
         public Account()

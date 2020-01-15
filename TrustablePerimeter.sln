@@ -1,7 +1,10 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrustablePerimeter", "TrustablePerimeter\TrustablePerimeter.csproj", "{D249887F-4C81-4A96-B365-F2FA809E6514}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleREST", "..\..\prevostcorentin\rest-sharp\SimpleREST\SimpleREST.csproj", "{8BAB8347-596E-4876-B2FD-B714C5008776}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,5 +16,15 @@ Global
 		{D249887F-4C81-4A96-B365-F2FA809E6514}.Debug|x86.Build.0 = Debug|x86
 		{D249887F-4C81-4A96-B365-F2FA809E6514}.Release|x86.ActiveCfg = Release|x86
 		{D249887F-4C81-4A96-B365-F2FA809E6514}.Release|x86.Build.0 = Release|x86
+		{8BAB8347-596E-4876-B2FD-B714C5008776}.Debug|x86.ActiveCfg = Debug|x86
+		{8BAB8347-596E-4876-B2FD-B714C5008776}.Debug|x86.Build.0 = Debug|x86
+		{8BAB8347-596E-4876-B2FD-B714C5008776}.Release|x86.ActiveCfg = Release|x86
+		{8BAB8347-596E-4876-B2FD-B714C5008776}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E745B93E-D4D2-407C-91E5-D1EF5F5B6684}
 	EndGlobalSection
 EndGlobal

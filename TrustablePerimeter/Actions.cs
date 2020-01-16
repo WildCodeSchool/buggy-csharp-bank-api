@@ -23,7 +23,10 @@ namespace TrustablePerimeter
             foreach (string affectation in bodyParamsAffectations)
             {
                 string[] operands = affectation.Split('=');
-                parameters.Add(operands[0], operands[1]);
+                if (operands.Length == 2)
+                {
+                    parameters.Add(operands[0], operands[1]);
+                }
             }
             return parameters;
         }
@@ -71,11 +74,15 @@ namespace TrustablePerimeter
             if (parameters.ContainsKey("id"))
             {
                 accountId = Convert.ToInt32(parameters["id"]);
-                
             }
             if (parameters.ContainsKey("amount"))
             {
                 amount = Convert.ToSingle(parameters["amount"]);
+            }
+            if (accountId == -1)
+            {
+                throw new SimpleREST.Exceptions.EndPointNotFoundException(HttpStatusCode.BadRequest, 
+                                                                          "Bad request, please give the id of the account to withdraw");
             }
             Account fetchedAccount = _database.GetAccountById(accountId);
             fetchedAccount.Withdraw(amount);

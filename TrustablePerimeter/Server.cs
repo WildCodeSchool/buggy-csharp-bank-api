@@ -35,19 +35,7 @@ namespace TrustablePerimeter
             Router.AddRouteMethod(withdrawalRoute, Method.Post);
             Router.SetActionForUriMethod(new WithdrawMoneyAction(database),
                                          "/account/withdraw",
-                                         Method.Post);
-            /*Route creditmentRoute = new Route("/account/credit");
-            Router.AddRouteMethod(creditmentRoute, Method.Post);
-            Router.SetActionForUriMethod(new CreditMoneyAction(database),
-                                         "/account/credit",
-                                         Method.Post);
-            Route accountRoute = new Route("/account");
-            Router.AddRouteMethod(accountRoute, Method.Get);
-            Router.SetActionForUriMethod(new ShowAccountsAction(database),
-                                         "/account",
-                                         Method.Get);
-            */
-
+                                         Method.Post);  
         }
     }
 }

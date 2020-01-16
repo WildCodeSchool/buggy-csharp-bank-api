@@ -192,20 +192,22 @@ namespace TrustablePerimeter
             Customer customer = new Customer();
             if (parameters.ContainsKey("account"))
             {
-                Account account = _database.GetAccountById(Convert.ToInt32(parameters["account"]));
+                int accountId = Convert.ToInt32(parameters["account"]);
+                Account account = _database.GetAccountById(accountId);
                 if (account is null)
                 {
                     account = new Account();
+                    account.Id = accountId;
                     _database.UpdateAccount(account);
                 }
                 customer.Account = account;
             }
             parameters.Remove("account");
             customer.Update(parameters);
-            byte[] customerId = Encoding.UTF8.GetBytes(Convert.ToString(customer.Id));
-            context.Response.OutputStream.Write(customerId, 0, customerId.Length);
-            byte[] customerName = Encoding.UTF8.GetBytes(Convert.ToString(customer.Name));
-            context.Response.OutputStream.Write(customerName, 0, customerName.Length);
+            byte[] responseBuffer = Encoding.UTF8.GetBytes("Customer " + Convert.ToString(customer.Name) + 
+                                                           " has been created with id " + Convert.ToString(customer.Id) + 
+                                                           " and associated to " + customer.Account);
+            context.Response.OutputStream.Write(responseBuffer, 0, responseBuffer.Length);
             _database.UpdateCustomer(customer);
         }
     }
@@ -228,12 +230,18 @@ namespace TrustablePerimeter
         {
             IDictionary<string, object> parameters = ExtractBodyParameters(context.Request.InputStream);
             Account account = new Account();
+            if (parameters.ContainsKey("customer"))
+            {
+                Customer customer = _database.GetCustomerById(Convert.ToInt32(parameters["customer"]));
+                account.Customer = customer;
+                parameters.Remove("customer");
+            }
             account.Update(parameters);
-            byte[] accountId = Encoding.UTF8.GetBytes(Convert.ToString(account.Id));
-            context.Response.OutputStream.Write(accountId, 0, accountId.Length);
-            byte[] accountMoney = Encoding.UTF8.GetBytes(Convert.ToString(account.Money));
-            context.Response.OutputStream.Write(accountMoney, 0, accountMoney.Length);
+            account.Customer.Account = account;
+            byte[] responseBuffer = Encoding.UTF8.GetBytes(account + " has been created and belongs to " + account.Customer.Name);
             _database.UpdateAccount(account);
+            _database.UpdateCustomer(account.Customer);
+            context.Response.OutputStream.Write(responseBuffer, 0, responseBuffer.Length);
         }
     }
 }
